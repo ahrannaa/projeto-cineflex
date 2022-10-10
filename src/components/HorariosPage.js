@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 export default function Horario(props) {
   const [filme, setFilme] = useState({});
   const { filmeId } = useParams();
+  const location = useLocation()
  
 
   useEffect(() => {
@@ -40,9 +41,11 @@ export default function Horario(props) {
           <EscolherHorario>
             {day.showtimes.map((time) => (
               <StyledLink
-                to={{
-                  pathname: `/sessao/${time.id}`,
-                  state: {},
+                to={`/sessao/${time.id}`}
+                state={{
+                  day,
+                  time,
+                  filme: location.state, 
                 }}
               >
                 <Hora key={time.id}>{time.name}</Hora>

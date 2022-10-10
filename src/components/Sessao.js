@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Sessao(props) {
@@ -9,6 +9,7 @@ export default function Sessao(props) {
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
   const [assentoEscolhido, setAssentoEscolhido] = useState();
+  const location = useLocation()
 
   useEffect(() => {
     const URL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${timeId}/seats`;
@@ -48,8 +49,6 @@ export default function Sessao(props) {
   function handleSeat(assento) {
     setAssentoEscolhido(assento);
   }
-
-  
 
   return (
     <>
@@ -106,7 +105,12 @@ export default function Sessao(props) {
             placeholder="Digite seu CPF..."
           ></Input>
         </Comprador>
-        <Link to={`/sucesso`}>
+        <Link to={`/sucesso`} state={{
+          ...location.state,
+          name,
+          cpf,
+          assento: assentoEscolhido,
+        }}>
           <Botao type="submit"> Reservar assento(s) </Botao>
         </Link>
       </form>

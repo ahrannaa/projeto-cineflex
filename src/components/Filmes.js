@@ -7,10 +7,8 @@ export default function Filmes({ filme }) {
       <Image>
         <Link
           key={filme.id}
-          to={{
-            pathname: `/horarios/${filme.id}`,
-            state: filme,
-          }}
+          to={`/horarios/${filme.id}`}
+          state={ filme }
         >
           <img src={filme.posterURL} alt="foto do filme" />
         </Link>
