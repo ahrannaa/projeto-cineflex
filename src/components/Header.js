@@ -17,7 +17,8 @@ const Cabecalho = styled.div`
   justify-content: center;
 
   h1 {
-    font-size: 34px;
+    font-family: 'Roboto',sans-serif; 
+    font-size: 50px;
     display: flex;
     color: #e8833a;
   }

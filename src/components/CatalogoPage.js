@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Filmes from "./Filmes";
 
-export default function Catalogo() {
+export default function Catalogo(props) {
   const [filmes, setFilmes] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function Catalogo() {
     });
 
     promisse.catch((err) => {
-      console.logo(err.response.data);
+      console.log(err.response.data);
     });
   }, []);
 
